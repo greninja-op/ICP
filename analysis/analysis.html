@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Analysis</title>
+    <link rel="stylesheet" href="analysis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-grid">
+
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <h3>University Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li><a href="#"><i class="fas fa-money-check-alt"></i><span>Payment Info</span></a></li>
+                    <li><a href="#"><i class="fas fa-book-open"></i><span>Courses</span></a></li>
+                    <li><a href="#"><i class="fas fa-poll"></i><span>Result</span></a></li>
+                    <li><a href="#" class="active"><i class="fas fa-chart-line"></i><span>Performance Analysis</span></a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i><span>Notice</span></a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <h1>Priya Sharma's Performance Analysis</h1>
+
+            <div class="stats-container">
+                <div class="card stat-card">
+                    <i class="fas fa-star stat-icon"></i>
+                    <div class="stat-info">
+                        <p>Overall GPA</p>
+                        <h3>8.7 / 10.0</h3>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <div class="progress-circle-new" style="--progress: 92;">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <p>Attendance</p>
+                        <h3>92%</h3>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <i class="fas fa-trophy stat-icon"></i>
+                    <div class="stat-info">
+                        <p>Class Rank</p>
+                        <h3>7th</h3>
+                    </div>
+                </div>
+            </div>
+
+            <section class="dashboard-section">
+                <h2>Semester Performance</h2>
+                <div class="card comparison-card">
+                    <div class="chart-legend">
+                        <div class="legend-item"><span class="legend-color your-score"></span> Your Score</div>
+                    </div>
+                    <div class="comparison-chart">
+                        <div class="subject-bar">
+                            <span class="subject-name">1st Sem</span>
+                            <div class="bars">
+                                <div class="bar your-score" style="width: 75%;">75</div>
+                            </div>
+                        </div>
+                        <div class="subject-bar">
+                            <span class="subject-name">2nd Sem</span>
+                            <div class="bars">
+                                <div class="bar your-score" style="width: 82%;">82</div>
+                            </div>
+                        </div>
+                        <div class="subject-bar">
+                            <span class="subject-name">3rd Sem</span>
+                            <div class="bars">
+                                <div class="bar your-score" style="width: 80%;">80</div>
+                            </div>
+                        </div>
+                        <div class="subject-bar">
+                            <span class="subject-name">4th Sem</span>
+                            <div class="bars">
+                                <div class="bar your-score" style="width: 88%;">88</div>
+                            </div>
+                        </div>
+                        <div class="subject-bar">
+                            <span class="subject-name">5th Sem</span>
+                            <div class="bars">
+                                <div class="bar your-score" style="width: 85%;">85</div>
+                            </div>
+                        </div>
+                        <div class="subject-bar">
+                            <span class="subject-name">6th Sem</span>
+                            <div class="bars">
+                                <div class="bar your-score" style="width: 91%;">91</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="dashboard-section">
+                <h2>Detailed Subject Report</h2>
+                <div class="card table-card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Marks Obtained</th>
+                                <th>Max Marks</th>
+                                <th>Grade</th>
+                                <th>Attendance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Programming</td>
+                                <td>91</td>
+                                <td>100</td>
+                                <td>A+</td>
+                                <td>95%</td>
+                            </tr>
+                            <tr>
+                                <td>Database Systems</td>
+                                <td>85</td>
+                                <td>100</td>
+                                <td>A</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <td>Networking</td>
+                                <td>78</td>
+                                <td>100</td>
+                                <td>B+</td>
+                                <td>88%</td>
+                            </tr>
+                             <tr>
+                                <td>Mathematics</td>
+                                <td>95</td>
+                                <td>100</td>
+                                <td>A+</td>
+                                <td>95%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

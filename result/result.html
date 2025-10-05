@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination Results</title>
+    <link rel="stylesheet" href="result.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-grid">
+
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <h3>University Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li><a href="#"><i class="fas fa-money-check-alt"></i><span>Payment Info</span></a></li>
+                    <li><a href="#"><i class="fas fa-book-open"></i><span>Courses</span></a></li>
+                    <li><a href="#" class="active"><i class="fas fa-poll"></i><span>Result</span></a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i><span>Performance Analysis</span></a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i><span>Notice</span></a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <h1>Examination Results</h1>
+            
+            <div class="results-container">
+
+                <div class="card semester-card collapsible">
+                    <div class="semester-header"><h2>6th Semester Result</h2><i class="fas fa-chevron-down"></i></div>
+                    <div class="semester-summary"><div class="summary-stat"><p>SGPA</p><h3>9.10</h3></div><div class="summary-stat"><p>Total Marks</p><h3>455 / 500</h3></div></div>
+                    <div class="collapsible-content">
+                        <table>
+                            <thead><tr><th>Subject</th><th>Internal (20)</th><th>Theory (80)</th><th>Total (100)</th><th>Grade</th></tr></thead>
+                            <tbody>
+                                <tr><td>Advanced Algorithms</td><td>19</td><td>76</td><td>95</td><td>A+</td></tr>
+                                <tr><td>Compiler Design</td><td>18</td><td>70</td><td>88</td><td>A</td></tr>
+                                <tr class="lab-row"><td>Compiler Design (Lab)</td><td>-</td><td>-</td><td>92</td><td>A+</td></tr>
+                                <tr><td>Cloud Computing</td><td>19</td><td>72</td><td>91</td><td>A+</td></tr>
+                                <tr><td>Cryptography</td><td>18</td><td>71</td><td>89</td><td>A</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card semester-card collapsible">
+                    <div class="semester-header"><h2>5th Semester Result</h2><i class="fas fa-chevron-down"></i></div>
+                    <div class="semester-summary"><div class="summary-stat"><p>SGPA</p><h3>8.50</h3></div><div class="summary-stat"><p>Total Marks</p><h3>425 / 500</h3></div></div>
+                    <div class="collapsible-content">
+                        <table>
+                            <thead><tr><th>Subject</th><th>Internal (20)</th><th>Theory (80)</th><th>Total (100)</th><th>Grade</th></tr></thead>
+                            <tbody>
+                                <tr><td>Programming</td><td>19</td><td>72</td><td>91</td><td>A+</td></tr>
+                                <tr><td>Database Systems</td><td>17</td><td>68</td><td>85</td><td>A</td></tr>
+                                <tr class="lab-row"><td>Database Systems (Lab)</td><td>-</td><td>-</td><td>88</td><td>A</td></tr>
+                                <tr><td>Networking</td><td>16</td><td>62</td><td>78</td><td>B+</td></tr>
+                                <tr><td>Economics</td><td>18</td><td>65</td><td>83</td><td>A</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card semester-card collapsible">
+                     <div class="semester-header"><h2>4th Semester Result</h2><i class="fas fa-chevron-down"></i></div>
+                     <div class="semester-summary"><div class="summary-stat"><p>SGPA</p><h3>8.80</h3></div><div class="summary-stat"><p>Total Marks</p><h3>440 / 500</h3></div></div>
+                    <div class="collapsible-content">
+                        <table>
+                            <thead><tr><th>Subject</th><th>Internal (20)</th><th>Theory (80)</th><th>Total (100)</th><th>Grade</th></tr></thead>
+                            <tbody>
+                                <tr><td>Operating Systems</td><td>18</td><td>72</td><td>90</td><td>A+</td></tr>
+                                <tr><td>Computer Architecture</td><td>17</td><td>71</td><td>88</td><td>A</td></tr>
+                                <tr class="lab-row"><td>Operating Systems (Lab)</td><td>-</td><td>-</td><td>91</td><td>A+</td></tr>
+                                <tr><td>Discrete Mathematics</td><td>19</td><td>73</td><td>92</td><td>A+</td></tr>
+                                <tr><td>Software Engineering</td><td>16</td><td>63</td><td>79</td><td>B+</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card semester-card collapsible">
+                     <div class="semester-header"><h2>3rd Semester Result</h2><i class="fas fa-chevron-down"></i></div>
+                     <div class="semester-summary"><div class="summary-stat"><p>SGPA</p><h3>8.00</h3></div><div class="summary-stat"><p>Total Marks</p><h3>400 / 500</h3></div></div>
+                    <div class="collapsible-content">
+                        <table>
+                            <thead><tr><th>Subject</th><th>Internal (20)</th><th>Theory (80)</th><th>Total (100)</th><th>Grade</th></tr></thead>
+                            <tbody>
+                                <tr><td>Data Structures</td><td>17</td><td>65</td><td>82</td><td>A</td></tr>
+                                <tr><td>Digital Logic Design</td><td>15</td><td>60</td><td>75</td><td>B+</td></tr>
+                                <tr class="lab-row"><td>Data Structures (Lab)</td><td>-</td><td>-</td><td>85</td><td>A</td></tr>
+                                <tr><td>Statistics</td><td>18</td><td>68</td><td>86</td><td>A</td></tr>
+                                <tr><td>Management</td><td>14</td><td>58</td><td>72</td><td>B</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card semester-card collapsible">
+                     <div class="semester-header"><h2>2nd Semester Result</h2><i class="fas fa-chevron-down"></i></div>
+                     <div class="semester-summary"><div class="summary-stat"><p>SGPA</p><h3>8.20</h3></div><div class="summary-stat"><p>Total Marks</p><h3>410 / 500</h3></div></div>
+                    <div class="collapsible-content">
+                        <table>
+                            <thead><tr><th>Subject</th><th>Internal (20)</th><th>Theory (80)</th><th>Total (100)</th><th>Grade</th></tr></thead>
+                            <tbody>
+                                <tr><td>C++ Programming</td><td>18</td><td>68</td><td>86</td><td>A</td></tr>
+                                <tr><td>Physics II</td><td>16</td><td>62</td><td>78</td><td>B+</td></tr>
+                                <tr class="lab-row"><td>Physics (Lab)</td><td>-</td><td>-</td><td>81</td><td>A</td></tr>
+                                <tr><td>Calculus II</td><td>17</td><td>69</td><td>86</td><td>A</td></tr>
+                                <tr><td>English II</td><td>19</td><td>60</td><td>79</td><td>B+</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card semester-card collapsible">
+                     <div class="semester-header"><h2>1st Semester Result</h2><i class="fas fa-chevron-down"></i></div>
+                     <div class="semester-summary"><div class="summary-stat"><p>SGPA</p><h3>7.50</h3></div><div class="summary-stat"><p>Total Marks</p><h3>375 / 500</h3></div></div>
+                    <div class="collapsible-content">
+                        <table>
+                            <thead><tr><th>Subject</th><th>Internal (20)</th><th>Theory (80)</th><th>Total (100)</th><th>Grade</th></tr></thead>
+                            <tbody>
+                                <tr><td>C Programming</td><td>15</td><td>60</td><td>75</td><td>B+</td></tr>
+                                <tr><td>Physics I</td><td>14</td><td>58</td><td>72</td><td>B</td></tr>
+                                <tr class="lab-row"><td>C Programming (Lab)</td><td>-</td><td>-</td><td>80</td><td>A</td></tr>
+                                <tr><td>Calculus I</td><td>16</td><td>61</td><td>77</td><td>B+</td></tr>
+                                <tr><td>English I</td><td>17</td><td>54</td><td>71</td><td>B</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <script src="result.js" defer></script>
+
+</body>
+</html>

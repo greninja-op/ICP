@@ -1,0 +1,153 @@
+/* --- Core Styles & Background --- */
+:root {
+    --accent-color: #e84545;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2b2e4a, #e84545);
+    background-attachment: fixed;
+    margin: 0;
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+/* --- Base Dashboard Grid Layout --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr; /* Sidebar, Main Content */
+    grid-template-rows: 1fr;
+    grid-template-areas: "sidebar main";
+    height: 100vh;
+    width: 100vw;
+}
+
+.dashboard-sidebar { grid-area: sidebar; }
+.dashboard-main { grid-area: main; }
+
+/* --- Glassmorphism Panel Style --- */
+.dashboard-sidebar,
+.dashboard-main {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    padding: 25px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.dashboard-sidebar::-webkit-scrollbar,
+.dashboard-main::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Left Sidebar Styling --- */
+.dashboard-sidebar { border-right: none; display: flex; flex-direction: column; }
+.sidebar-header { text-align: center; margin-bottom: 30px; }
+.logo-icon { font-size: 3rem; margin-bottom: 10px; }
+.sidebar-nav { flex-grow: 1; }
+.sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar-nav a { display: flex; align-items: center; gap: 15px; padding: 15px; color: var(--text-secondary); text-decoration: none; border-radius: 8px; margin-bottom: 10px; transition: all 0.3s ease; }
+.sidebar-nav a:hover { background: rgba(255, 255, 255, 0.15); color: var(--text-primary); }
+.sidebar-nav a.active { background: var(--accent-color); color: var(--text-primary); font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.sidebar-nav i { font-size: 1.1rem; width: 20px; text-align: center; }
+
+/* --- Main Content Styling --- */
+.dashboard-main { border-left: none; }
+.dashboard-main h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 2px solid rgba(255, 255, 255, 0.3); padding-bottom: 15px; margin-bottom: 30px; }
+.card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; }
+
+/* --- Notice Page Styles --- */
+.notice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.notice-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.notice-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.notice-header i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.notice-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.notice-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.notice-meta .category {
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.category.urgent { background-color: var(--accent-color); color: var(--text-primary); }
+.category.event { background-color: #3b82f6; color: var(--text-primary); }
+.category.general { background-color: rgba(255,255,255,0.2); color: var(--text-secondary); }
+/* New category style */
+.category.campus-life { background-color: #16a34a; color: var(--text-primary); }
+
+.notice-card p {
+    margin: 0 0 20px 0;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.read-more {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* --- Styles for Notices with Posters --- */
+.notice-card.has-poster {
+    display: grid;
+    grid-template-columns: 1fr 220px; /* Text content | Poster */
+    gap: 25px;
+    align-items: start;
+}
+
+.notice-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Subjects</title>
+    <link rel="stylesheet" href="subjects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-grid">
+
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <h3>University Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li><a href="#"><i class="fas fa-money-check-alt"></i><span>Payment Info</span></a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i><span>Subjects</span></a></li>
+                    <li><a href="#"><i class="fas fa-poll"></i><span>Result</span></a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i><span>Performance Analysis</span></a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i><span>Notice</span></a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <h1>My Subjects</h1>
+            <h2 class="semester-title">Current Semester: 1st Semester</h2>
+            
+            <div class="subjects-grid">
+
+                <div class="card subject-card collapsible">
+                    <div class="card-header"><h4>MA101</h4><h3>Mathematics</h3></div>
+                    <div class="card-body">
+                        <img src="teacher1.jpeg" alt="Instructor Photo">
+                        <div class="instructor-details"><span>Dr. Rajesh Kumar</span><p>Professor, Maths Dept.</p></div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn-view">View Details <i class="fas fa-chevron-down"></i></a></div>
+                    <div class="collapsible-content"><h4>Topics:</h4><ul><li>Calculus</li><li>Linear Algebra</li></ul></div>
+                </div>
+
+                <div class="card subject-card collapsible">
+                    <div class="card-header"><h4>ST101</h4><h3>Statistics</h3></div>
+                    <div class="card-body">
+                        <img src="teacher2.jpeg" alt="Instructor Photo">
+                        <div class="instructor-details"><span>Dr. Meera Varma</span><p>Professor, Stats Dept.</p></div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn-view">View Details <i class="fas fa-chevron-down"></i></a></div>
+                    <div class="collapsible-content"><h4>Topics:</h4><ul><li>Probability</li><li>Statistical Inference</li></ul></div>
+                </div>
+                
+                <div class="card subject-card collapsible">
+                    <div class="card-header"><h4>CS101</h4><h3>Linux</h3></div>
+                    <div class="card-body">
+                        <img src="teacher3.jpeg" alt="Instructor Photo">
+                        <div class="instructor-details"><span>Dr. Vikram Singh</span><p>Asst. Professor, CSE Dept.</p></div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn-view">View Details <i class="fas fa-chevron-down"></i></a></div>
+                    <div class="collapsible-content"><h4>Topics:</h4><ul><li>Command Line</li><li>Shell Scripting</li></ul></div>
+                </div>
+
+                <div class="card subject-card collapsible">
+                    <div class="card-header"><h4>CS102</h4><h3>Database & Algorithms</h3></div>
+                    <div class="card-body">
+                        <img src="teacher1.jpeg" alt="Instructor Photo">
+                        <div class="instructor-details"><span>Dr. Anjali Desai</span><p>Professor, CSE Dept.</p></div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn-view">View Details <i class="fas fa-chevron-down"></i></a></div>
+                    <div class="collapsible-content"><h4>Topics:</h4><ul><li>SQL</li><li>Data Structures</li></ul></div>
+                </div>
+                
+                <div class="card subject-card collapsible">
+                    <div class="card-header"><h4>CS103</h4><h3>C++ Programming</h3></div>
+                    <div class="card-body">
+                        <img src="teacher2.jpeg" alt="Instructor Photo">
+                        <div class="instructor-details"><span>Dr. Sunita Reddy</span><p>Professor, CSE Dept.</p></div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn-view">View Details <i class="fas fa-chevron-down"></i></a></div>
+                    <div class="collapsible-content"><h4>Topics:</h4><ul><li>OOP Concepts</li><li>Pointers</li></ul></div>
+                </div>
+                
+                <div class="card subject-card collapsible">
+                    <div class="card-header"><h4>CS104L</h4><h3>C Programming <span class="lab-badge">Lab</span></h3></div>
+                    <div class="card-body">
+                        <img src="teacher3.jpeg" alt="Instructor Photo">
+                        <div class="instructor-details"><span>Dr. Vikram Singh</span><p>Asst. Professor, CSE Dept.</p></div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn-view">View Details <i class="fas fa-chevron-down"></i></a></div>
+                    <div class="collapsible-content"><h4>Topics:</h4><ul><li>Arrays & Strings</li><li>File Handling</li></ul></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="subjects.js" defer></script>
+</body>
+</html>
