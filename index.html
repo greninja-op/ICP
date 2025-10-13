@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .page-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .page-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .page-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-section i {
+            font-size: 4rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .pages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        
+        <h1>University Portal</h1>
+        <p class="subtitle">Access all your student portal features in one place</p>
+
+        <div class="pages-grid">
+            <a href="/login/login.html" class="page-card">
+                <i class="fas fa-sign-in-alt"></i>
+                <h3>Login</h3>
+                <p>Sign in to your account</p>
+            </a>
+
+            <a href="/dashboard/dashboard.html" class="page-card">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Dashboard</h3>
+                <p>View your profile overview</p>
+            </a>
+
+            <a href="/subjects/subjects.html" class="page-card">
+                <i class="fas fa-book-open"></i>
+                <h3>Subjects</h3>
+                <p>View your enrolled courses</p>
+            </a>
+
+            <a href="/result/result.html" class="page-card">
+                <i class="fas fa-poll"></i>
+                <h3>Results</h3>
+                <p>Check your exam results</p>
+            </a>
+
+            <a href="/payments/payments.html" class="page-card">
+                <i class="fas fa-money-check-alt"></i>
+                <h3>Payments</h3>
+                <p>Manage fee payments</p>
+            </a>
+
+            <a href="/notice/notice.html" class="page-card">
+                <i class="fas fa-bell"></i>
+                <h3>Notices</h3>
+                <p>View important announcements</p>
+            </a>
+
+            <a href="/analysis/analysis.html" class="page-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Analysis</h3>
+                <p>View performance analytics</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
