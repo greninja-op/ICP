@@ -9,99 +9,163 @@
 </head>
 <body>
 
-    <div class="dashboard-grid">
-
-        <aside class="dashboard-sidebar">
-            <div class="sidebar-header">
-                <i class="fas fa-graduation-cap logo-icon"></i>
-                <h3>University Portal</h3>
-            </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li><a href="#"><i class="fas fa-money-check-alt"></i><span>Payment Info</span></a></li>
-                    <li><a href="#"><i class="fas fa-user-plus"></i><span>Registration</span></a></li>
-                    <li><a href="#"><i class="fas fa-book-open"></i><span>Courses</span></a></li>
-                    <li><a href="#"><i class="fas fa-arrow-down"></i><span>Drop Semester</span></a></li>
-                    <li><a href="#"><i class="fas fa-poll"></i><span>Result</span></a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i><span>Performance Analysis</span></a></li>
-                    <li><a href="#"><i class="fas fa-bell"></i><span>Notice</span></a></li>
-                    <li><a href="#"><i class="fas fa-calendar-alt"></i><span>Schedule</span></a></li>
-                </ul>
-            </nav>
-            <div class="sidebar-footer">
-                <a href="#"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
-            </div>
-        </aside>
-
-        <main class="dashboard-main">
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search">
-            </div>
-
-            <div class="welcome-banner">
-                <div class="banner-text">
-                    <p>September 30, 2025</p>
-                    <h2>Welcome back, Priya!</h2>
-                    <p>Always stay updated in your student portal.</p>
-                </div>
-                <div class="banner-icon">
-                    <i class="fas fa-user-graduate"></i>
+    <div class="dashboard-container">
+        
+        <!-- Top Header -->
+        <header class="top-header">
+            <h1>Dashboard</h1>
+            <div class="user-profile">
+                <span class="user-name">Sarah Lee</span>
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
                 </div>
             </div>
+        </header>
 
-            <section class="dashboard-section">
-                <h2>Student Profile Overview</h2>
-                <div class="card profile-details-card">
-                    <ul>
-                        <li><strong>Student ID:</strong> <span>S2025108</span></li>
-                        <li><strong>Date of Birth:</strong> <span>15 Aug 2004</span></li>
-                        <li><strong>Program / Course:</strong> <span>B.Tech Computer Science</span></li>
-                        <li><strong>Current Year:</strong> <span>3rd Year, 5th Semester</span></li>
-                        <li><strong>Enrollment Status:</strong> <span>Active</span></li>
-                        <li><strong>Academic Advisor:</strong> <span>Dr. Ramesh Gupta</span></li>
-                        <li><strong>Overall GPA:</strong> <span>8.7 / 10.0</span></li>
-                        <li><strong>Official Email:</strong> <span>p.sharma.cs22@university.ac.in</span></li>
-                    </ul>
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            
+            <!-- Left Main Content -->
+            <main class="main-content">
+                
+                <!-- Welcome Card -->
+                <div class="welcome-card">
+                    <div class="welcome-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="welcome-text">
+                        <h2>Welcome Back, Sarah!</h2>
+                        <p>Here's what's happening today. Let's make it a productive one!</p>
+                    </div>
                 </div>
-            </section>
 
-        </main>
+                <!-- Stats Cards Row -->
+                <div class="stats-row">
+                    
+                    <!-- Academic Progress Card -->
+                    <div class="card progress-card">
+                        <h3>Academic Progress</h3>
+                        <div class="progress-content">
+                            <div class="circular-progress">
+                                <svg width="140" height="140">
+                                    <circle cx="70" cy="70" r="60" class="progress-bg"></circle>
+                                    <circle cx="70" cy="70" r="60" class="progress-bar"></circle>
+                                </svg>
+                                <div class="progress-text">
+                                    <span class="gpa-value">3.8</span>
+                                    <span class="gpa-label">GPA</span>
+                                </div>
+                            </div>
+                            <p class="progress-message">Great job! Keep up the excellent work.</p>
+                        </div>
+                    </div>
 
-        <aside class="dashboard-sidebar-right">
-            <div class="profile-section">
-                <img src="student.jpeg" alt="Student Photo">
-                <div class="profile-text">
-                    <h4>Priya Sharma</h4>
-                    <p>3rd Year</p>
-                </div>
-                <i class="fas fa-bell notification-icon"></i>
-            </div>
+                    <!-- Upcoming Assignments Card -->
+                    <div class="card assignments-card">
+                        <h3>Upcoming Assignments</h3>
+                        <div class="assignment-list">
+                            <div class="assignment-item">
+                                <div class="assignment-info">
+                                    <h4>CS101: Final Project</h4>
+                                    <p>Due: May 15, 2024</p>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                            <div class="assignment-item">
+                                <div class="assignment-info">
+                                    <h4>ENG203: Essay on Modernism</h4>
+                                    <p>Due: May 20, 2024</p>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                            <div class="assignment-item">
+                                <div class="assignment-info">
+                                    <h4>MATH305: Problem Set 5</h4>
+                                    <p>Due: May 22, 2024</p>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
 
-            <section class="dashboard-section">
-                <h4>Course Instructors</h4>
-                <div class="instructor-container">
-                    <img src="teacher1.jpeg" alt="Instructor 1">
-                    <img src="teacher2.jpeg" alt="Instructor 2">
-                    <img src="teacher3.jpeg" alt="Instructor 3">
                 </div>
-            </section>
 
-            <section class="dashboard-section">
-                <h4>Daily Notice</h4>
-                <div class="notice-card">
-                    <h5>Term payment due</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="#">See more</a>
+                <!-- College Announcements -->
+                <div class="card announcements-card">
+                    <h3>College Announcements</h3>
+                    <div class="announcement-list">
+                        <p>Library hours extended during finals week</p>
+                        <p>Summer course registration is now open</p>
+                        <p>Campus-wide power outage on May 25th from 1 AM to 5 AM</p>
+                    </div>
                 </div>
-                <div class="notice-card">
-                    <h5>Exam schedule</h5>
-                    <p>Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-                    <a href="#">See more</a>
+
+            </main>
+
+            <!-- Right Sidebar - Notifications -->
+            <aside class="notifications-sidebar">
+                <h3>Notifications</h3>
+                
+                <div class="notification-item">
+                    <div class="notification-icon blue">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Annual Tech Fest "Innovate 2024"</h4>
+                        <p>Join us for a day of innovation and technology. Starts tomorrow at 10 AM in the main auditorium.</p>
+                    </div>
+                    <i class="fas fa-chevron-right notification-arrow"></i>
                 </div>
-            </section>
-        </aside>
+
+                <div class="notification-item">
+                    <div class="notification-icon red">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Tuition Fee Payment Reminder</h4>
+                        <p>Your tuition fee for the upcoming semester is due in 3 days. Please pay to avoid late fees.</p>
+                    </div>
+                    <i class="fas fa-chevron-right notification-arrow"></i>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon green">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Mid-term Exam Schedule</h4>
+                        <p>The schedule for mid-term exams has been released. Check your portal for details.</p>
+                    </div>
+                    <i class="fas fa-chevron-right notification-arrow"></i>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Courses</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Attendance</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Grades</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
 
     </div>
 
