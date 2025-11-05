@@ -4,61 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Portal - Student Dashboard</title>
-    <link rel="stylesheet" href="payments.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="payments.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Force hover effects to work */
+        .hover-card {
+            transition: all 0.3s ease !important;
+        }
+        .hover-card:hover {
+            background: rgba(255, 255, 255, 0.4) !important;
+            transform: translateY(-8px) !important;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+        }
+        .dark .hover-card:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
+        }
+    </style>
+    <style type="text/tailwindcss">
+        :root {
+            --background-start-light: #e0f2ff;
+            --background-end-light: #ffffff;
+            --background-start-dark: #1e3a8a;
+            --background-end-dark: #101922;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
 </head>
-<body>
-
-    <div class="dashboard-grid">
-
-        <!-- Left Sidebar -->
-        <aside class="dashboard-sidebar">
-            <div class="sidebar-header">
-                <i class="fas fa-graduation-cap logo-icon"></i>
-                <h3>University Portal</h3>
+<body class="font-display bg-background-light dark:bg-background-dark">
+    <div class="flex h-screen bg-gradient-to-br from-[var(--background-start-light)] to-[var(--background-end-light)] dark:from-[var(--background-start-dark)] dark:to-[var(--background-end-dark)]">
+        <main class="flex-1 p-4 md:p-8 overflow-y-auto pb-24">
+            <div class="flex justify-between items-center mb-8">
+                <header>
+                    <h1 class="text-4xl font-bold text-slate-800 dark:text-white flex items-center gap-3">
+                        <i class="fas fa-wallet"></i> Payment Portal
+                    </h1>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">Manage your fees and payments</p>
+                </header>
+                <div class="flex items-center gap-3">
+                    <h2 class="text-slate-800 dark:text-white font-bold text-lg text-right">Sarah Lee</h2>
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPD5zDUzQYOtZPcZBRltqE0NlrL0yoFWQWVfUvhCDEmVkrkLEC0SWkUhnZCf8n1ry6vWqVwMyRQzz8zOodKKbpDy4-1rrs6yTWkP8ui7rPYGmTJzOzYxC45H6N1p8IudmUg3DIeIBUuar3HiDr7iiNJ1KqoIhhziw3A4MFAD8OKKYAtMFZccu41ftGwbC831vsipb8ELThRgwCp36zAASDSwhUhNONK_M4nW5boCt52ieV_kQAVQFfKawpR5yinwxmJf-U44nFLUhG");'></div>
+                </div>
             </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="../dashboard/dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li><a href="../payments/payments.html" class="active"><i class="fas fa-money-check-alt"></i><span>Payment Info</span></a></li>
-                    <li><a href="#"><i class="fas fa-user-plus"></i><span>Registration</span></a></li>
-                    <li><a href="../subjects/subjects.html"><i class="fas fa-book-open"></i><span>Courses</span></a></li>
-                    <li><a href="#"><i class="fas fa-arrow-down"></i><span>Drop Semester</span></a></li>
-                    <li><a href="../result/result.html"><i class="fas fa-poll"></i><span>Result</span></a></li>
-                    <li><a href="../analysis/analysis.html"><i class="fas fa-chart-line"></i><span>Performance Analysis</span></a></li>
-                    <li><a href="../notice/notice.html"><i class="fas fa-bell"></i><span>Notice</span></a></li>
-                    <li><a href="#"><i class="fas fa-calendar-alt"></i><span>Schedule</span></a></li>
-                </ul>
-            </nav>
-            <div class="sidebar-footer">
-                <a href="../login/login.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="dashboard-main">
-            <h1><i class="fas fa-wallet"></i> Payment Portal</h1>
 
             <!-- Payment Summary Card -->
-            <div class="card payment-summary-card">
-                <div class="summary-header">
+            <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-6 mb-8">
+                <div class="flex justify-between items-center flex-wrap gap-4">
                     <div>
-                        <h2>Payment Summary</h2>
-                        <p class="summary-subtitle">Academic Year 2024-25</p>
+                        <h2 class="text-2xl font-bold text-slate-800 dark:text-white">Payment Summary</h2>
+                        <p class="text-slate-600 dark:text-slate-400 mt-1">Academic Year 2024-25</p>
                     </div>
-                    <div class="summary-stats">
-                        <div class="stat-item">
-                            <i class="fas fa-check-circle"></i>
+                    <div class="flex gap-6">
+                        <div class="flex items-center gap-3">
+                            <div class="p-3 bg-green-500/20 text-green-500 rounded-full">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                            </div>
                             <div>
-                                <span class="stat-value">₹32,400</span>
-                                <span class="stat-label">Paid</span>
+                                <span class="block text-2xl font-bold text-slate-800 dark:text-white">₹32,400</span>
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Paid</span>
                             </div>
                         </div>
-                        <div class="stat-item pending">
-                            <i class="fas fa-clock"></i>
+                        <div class="flex items-center gap-3">
+                            <div class="p-3 bg-orange-500/20 text-orange-500 rounded-full">
+                                <i class="fas fa-clock text-2xl"></i>
+                            </div>
                             <div>
-                                <span class="stat-value">₹18,800</span>
-                                <span class="stat-label">Pending</span>
+                                <span class="block text-2xl font-bold text-slate-800 dark:text-white">₹18,800</span>
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Pending</span>
                             </div>
                         </div>
                     </div>
@@ -66,63 +105,65 @@
             </div>
 
             <!-- Pending Payments Section -->
-            <section class="payments-section">
-                <h2><i class="fas fa-exclamation-circle"></i> Pending Payments</h2>
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
+                    <i class="fas fa-exclamation-circle text-orange-500"></i> Pending Payments
+                </h2>
                 
-                <div class="payments-grid">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Semester Fee Cards -->
-                    <div class="payment-card pending-card" data-fee-type="semester" data-semester="5">
-                        <div class="card-header">
-                            <div>
-                                <h3>Semester 5 Fee</h3>
-                                <p>2024-25 Odd Semester</p>
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 overflow-hidden payment-card pending-card" data-fee-type="semester" data-semester="5">
+                        <div class="p-6 border-b border-white/20">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-800 dark:text-white">Semester 5 Fee</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm">2024-25 Odd Semester</p>
+                                </div>
+                                <span class="text-xs bg-orange-500/20 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full font-semibold">Pending</span>
                             </div>
-                            <span class="status-badge pending">Pending</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="amount-display">
-                                <span class="amount">₹17,000</span>
-                                <span class="due-date">Due: 15 Oct 2025</span>
+                            <div class="mb-4">
+                                <span class="text-3xl font-bold text-primary">₹17,000</span>
+                                <p class="text-sm text-red-600 dark:text-red-400 mt-1">Due: 15 Oct 2025</p>
                             </div>
-                            <button class="btn-pay" onclick="openPaymentModal('Semester 5 Fee', 17000, 'semester', 5)">
+                            <button class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2" onclick="openPaymentModal('Semester 5 Fee', 17000, 'semester', 5)">
                                 <i class="fas fa-credit-card"></i> Pay Now
                             </button>
                         </div>
                     </div>
 
-                    <div class="payment-card pending-card" data-fee-type="exam" data-semester="5">
-                        <div class="card-header">
-                            <div>
-                                <h3>Semester 5 Exam Fee</h3>
-                                <p>Mid & End Semester</p>
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 overflow-hidden payment-card pending-card" data-fee-type="exam" data-semester="5">
+                        <div class="p-6 border-b border-white/20">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-800 dark:text-white">Semester 5 Exam Fee</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm">Mid & End Semester</p>
+                                </div>
+                                <span class="text-xs bg-orange-500/20 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full font-semibold">Pending</span>
                             </div>
-                            <span class="status-badge pending">Pending</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="amount-display">
-                                <span class="amount">₹800</span>
-                                <span class="due-date">Due: 20 Oct 2025</span>
+                            <div class="mb-4">
+                                <span class="text-3xl font-bold text-primary">₹800</span>
+                                <p class="text-sm text-red-600 dark:text-red-400 mt-1">Due: 20 Oct 2025</p>
                             </div>
-                            <button class="btn-pay" onclick="openPaymentModal('Semester 5 Exam Fee', 800, 'exam', 5)">
+                            <button class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2" onclick="openPaymentModal('Semester 5 Exam Fee', 800, 'exam', 5)">
                                 <i class="fas fa-credit-card"></i> Pay Now
                             </button>
                         </div>
                     </div>
 
-                    <div class="payment-card pending-card" data-fee-type="other">
-                        <div class="card-header">
-                            <div>
-                                <h3>Annual Tech Fest</h3>
-                                <p>TechnoVerse 2025</p>
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 overflow-hidden payment-card pending-card" data-fee-type="other">
+                        <div class="p-6 border-b border-white/20">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-800 dark:text-white">Annual Tech Fest</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm">TechnoVerse 2025</p>
+                                </div>
+                                <span class="text-xs bg-orange-500/20 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full font-semibold">Pending</span>
                             </div>
-                            <span class="status-badge pending">Pending</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="amount-display">
-                                <span class="amount">₹1,000</span>
-                                <span class="due-date">Due: 25 Oct 2025</span>
+                            <div class="mb-4">
+                                <span class="text-3xl font-bold text-primary">₹1,000</span>
+                                <p class="text-sm text-red-600 dark:text-red-400 mt-1">Due: 25 Oct 2025</p>
                             </div>
-                            <button class="btn-pay" onclick="openPaymentModal('Annual Tech Fest', 1000, 'other', null)">
+                            <button class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2" onclick="openPaymentModal('Annual Tech Fest', 1000, 'other', null)">
                                 <i class="fas fa-credit-card"></i> Pay Now
                             </button>
                         </div>
@@ -131,129 +172,145 @@
             </section>
 
             <!-- All Semester Fees Overview -->
-            <section class="payments-section">
-                <h2><i class="fas fa-list-alt"></i> Semester Fees Overview</h2>
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
+                    <i class="fas fa-list-alt"></i> Semester Fees Overview
+                </h2>
                 
-                <div class="semester-overview">
-                    <div class="overview-card" data-semester="1">
-                        <div class="semester-info">
-                            <h4>Semester 1</h4>
-                            <p>Year 1 - Odd</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <div class="hover-card bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-4 transition-all cursor-pointer">
+                        <div class="mb-3">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 1</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Year 1 - Odd</p>
                         </div>
-                        <div class="fee-info">
-                            <span class="fee-amount">₹16,000</span>
-                            <span class="status-badge paid"><i class="fas fa-check"></i> Paid</span>
-                        </div>
-                    </div>
-
-                    <div class="overview-card" data-semester="2">
-                        <div class="semester-info">
-                            <h4>Semester 2</h4>
-                            <p>Year 1 - Even</p>
-                        </div>
-                        <div class="fee-info">
-                            <span class="fee-amount">₹16,000</span>
-                            <span class="status-badge paid"><i class="fas fa-check"></i> Paid</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800 dark:text-white">₹16,000</span>
+                            <span class="text-xs bg-green-500/20 text-green-600 dark:text-green-400 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                                <i class="fas fa-check"></i> Paid
+                            </span>
                         </div>
                     </div>
 
-                    <div class="overview-card" data-semester="3">
-                        <div class="semester-info">
-                            <h4>Semester 3</h4>
-                            <p>Year 2 - Odd</p>
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-4 transition-all cursor-pointer hover-card">
+                        <div class="mb-3">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 2</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Year 1 - Even</p>
                         </div>
-                        <div class="fee-info">
-                            <span class="fee-amount">₹16,500</span>
-                            <span class="status-badge paid"><i class="fas fa-check"></i> Paid</span>
-                        </div>
-                    </div>
-
-                    <div class="overview-card" data-semester="4">
-                        <div class="semester-info">
-                            <h4>Semester 4</h4>
-                            <p>Year 2 - Even</p>
-                        </div>
-                        <div class="fee-info">
-                            <span class="fee-amount">₹16,500</span>
-                            <span class="status-badge paid"><i class="fas fa-check"></i> Paid</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800 dark:text-white">₹16,000</span>
+                            <span class="text-xs bg-green-500/20 text-green-600 dark:text-green-400 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                                <i class="fas fa-check"></i> Paid
+                            </span>
                         </div>
                     </div>
 
-                    <div class="overview-card" data-semester="5">
-                        <div class="semester-info">
-                            <h4>Semester 5</h4>
-                            <p>Year 3 - Odd</p>
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-4 transition-all cursor-pointer hover-card">
+                        <div class="mb-3">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 3</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Year 2 - Odd</p>
                         </div>
-                        <div class="fee-info">
-                            <span class="fee-amount">₹17,000</span>
-                            <span class="status-badge pending"><i class="fas fa-clock"></i> Pending</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800 dark:text-white">₹16,500</span>
+                            <span class="text-xs bg-green-500/20 text-green-600 dark:text-green-400 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                                <i class="fas fa-check"></i> Paid
+                            </span>
                         </div>
                     </div>
 
-                    <div class="overview-card" data-semester="6">
-                        <div class="semester-info">
-                            <h4>Semester 6</h4>
-                            <p>Year 3 - Even</p>
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-4 transition-all cursor-pointer hover-card">
+                        <div class="mb-3">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 4</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Year 2 - Even</p>
                         </div>
-                        <div class="fee-info">
-                            <span class="fee-amount">₹17,000</span>
-                            <span class="status-badge upcoming"><i class="fas fa-hourglass-half"></i> Upcoming</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800 dark:text-white">₹16,500</span>
+                            <span class="text-xs bg-green-500/20 text-green-600 dark:text-green-400 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                                <i class="fas fa-check"></i> Paid
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-4 transition-all cursor-pointer hover-card">
+                        <div class="mb-3">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 5</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Year 3 - Odd</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800 dark:text-white">₹17,000</span>
+                            <span class="text-xs bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                                <i class="fas fa-clock"></i> Pending
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-4 transition-all cursor-pointer hover-card">
+                        <div class="mb-3">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 6</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Year 3 - Even</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-slate-800 dark:text-white">₹17,000</span>
+                            <span class="text-xs bg-slate-500/20 text-slate-600 dark:text-slate-400 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                                <i class="fas fa-hourglass-half"></i> Upcoming
+                            </span>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Payment History -->
-            <section class="payments-section">
-                <h2><i class="fas fa-history"></i> Payment History</h2>
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
+                    <i class="fas fa-history"></i> Payment History
+                </h2>
                 
-                <div class="card history-card">
-                    <div class="history-item">
-                        <div class="history-icon paid">
-                            <i class="fas fa-check-circle"></i>
+                <div class="bg-white/30 dark:bg-white/10 rounded-2xl shadow-lg backdrop-blur-xl border border-white/20 p-6 space-y-4">
+                    <div class="flex items-center gap-4 pb-4 border-b border-white/20">
+                        <div class="p-3 bg-green-500/20 text-green-500 rounded-full">
+                            <i class="fas fa-check-circle text-2xl"></i>
                         </div>
-                        <div class="history-details">
-                            <h4>Semester 4 Fee</h4>
-                            <p>Transaction ID: TXN2024091234567</p>
-                            <span class="history-date">15 Feb 2025</span>
+                        <div class="flex-1">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 4 Fee</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Transaction ID: TXN2024091234567</p>
+                            <span class="text-xs text-slate-500 dark:text-slate-500">15 Feb 2025</span>
                         </div>
-                        <div class="history-amount">
-                            <span class="amount">₹16,500</span>
-                            <button class="btn-receipt" onclick="downloadReceipt('TXN2024091234567')">
+                        <div class="text-right">
+                            <span class="block text-xl font-bold text-slate-800 dark:text-white mb-2">₹16,500</span>
+                            <button class="text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-primary/80 transition-colors" onclick="downloadReceipt('TXN2024091234567')">
                                 <i class="fas fa-download"></i> Receipt
                             </button>
                         </div>
                     </div>
 
-                    <div class="history-item">
-                        <div class="history-icon paid">
-                            <i class="fas fa-check-circle"></i>
+                    <div class="flex items-center gap-4 pb-4 border-b border-white/20">
+                        <div class="p-3 bg-green-500/20 text-green-500 rounded-full">
+                            <i class="fas fa-check-circle text-2xl"></i>
                         </div>
-                        <div class="history-details">
-                            <h4>Semester 4 Exam Fee</h4>
-                            <p>Transaction ID: TXN2024091234566</p>
-                            <span class="history-date">20 Feb 2025</span>
+                        <div class="flex-1">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Semester 4 Exam Fee</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Transaction ID: TXN2024091234566</p>
+                            <span class="text-xs text-slate-500 dark:text-slate-500">20 Feb 2025</span>
                         </div>
-                        <div class="history-amount">
-                            <span class="amount">₹800</span>
-                            <button class="btn-receipt" onclick="downloadReceipt('TXN2024091234566')">
+                        <div class="text-right">
+                            <span class="block text-xl font-bold text-slate-800 dark:text-white mb-2">₹800</span>
+                            <button class="text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-primary/80 transition-colors" onclick="downloadReceipt('TXN2024091234566')">
                                 <i class="fas fa-download"></i> Receipt
                             </button>
                         </div>
                     </div>
 
-                    <div class="history-item">
-                        <div class="history-icon paid">
-                            <i class="fas fa-check-circle"></i>
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-green-500/20 text-green-500 rounded-full">
+                            <i class="fas fa-check-circle text-2xl"></i>
                         </div>
-                        <div class="history-details">
-                            <h4>Sports Day Fund</h4>
-                            <p>Transaction ID: TXN2024091234565</p>
-                            <span class="history-date">10 Jan 2025</span>
+                        <div class="flex-1">
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">Sports Day Fund</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Transaction ID: TXN2024091234565</p>
+                            <span class="text-xs text-slate-500 dark:text-slate-500">10 Jan 2025</span>
                         </div>
-                        <div class="history-amount">
-                            <span class="amount">₹500</span>
-                            <button class="btn-receipt" onclick="downloadReceipt('TXN2024091234565')">
+                        <div class="text-right">
+                            <span class="block text-xl font-bold text-slate-800 dark:text-white mb-2">₹500</span>
+                            <button class="text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-primary/80 transition-colors" onclick="downloadReceipt('TXN2024091234565')">
                                 <i class="fas fa-download"></i> Receipt
                             </button>
                         </div>
@@ -262,7 +319,31 @@
             </section>
 
         </main>
+    </div>
 
+    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+        <nav class="flex items-center justify-center gap-4 bg-white/50 dark:bg-slate-900/50 backdrop-blur-lg rounded-full shadow-lg p-3 border border-white/20 dark:border-slate-800">
+            <a class="flex items-center gap-2 px-4 py-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary" href="../dashboard/dashboard.html">
+                <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path></svg>
+                <span class="text-sm">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-2 px-4 py-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary" href="../subjects/subjects.html">
+                <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M224,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h64a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"></path></svg>
+                <span class="text-sm">Subjects</span>
+            </a>
+            <a class="flex items-center gap-2 px-4 py-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary" href="../notice/notice.html">
+                <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-96-88v64a8,8,0,0,1-16,0V132.94l-4.42,2.22a8,8,0,0,1-7.16-14.32l16-8A8,8,0,0,1,112,120Zm59.16,30.45L152,176h16a8,8,0,0,1,0,16H136a8,8,0,0,1-6.4-12.8l28.78-38.37A8,8,0,1,0,145.07,132a8,8,0,1,1-13.85-8A24,24,0,0,1,176,136,23.76,23.76,0,0,1,171.16,150.45Z"></path></svg>
+                <span class="text-sm">Notice</span>
+            </a>
+            <a class="flex items-center gap-2 px-4 py-2 rounded-full text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary" href="../result/result.html">
+                <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"></path></svg>
+                <span class="text-sm">Results</span>
+            </a>
+            <a class="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white font-semibold" href="../payments/payments.html">
+                <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg>
+                <span class="text-sm">Payments</span>
+            </a>
+        </nav>
     </div>
 
     <!-- Payment Modal -->
@@ -374,3 +455,4 @@
     <script src="payments.js"></script>
 </body>
 </html>
+

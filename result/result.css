@@ -109,18 +109,14 @@ body {
 .summary-stat h3 { margin: 0; font-size: 1.8rem; font-weight: bold; }
 
 .collapsible-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    padding-top: 0;
+    transition: all 0.3s ease;
 }
 
-.semester-card.active .collapsible-content {
-    max-height: 500px;
-    padding-top: 20px;
+.collapsible-content.hidden {
+    display: none;
 }
 
-.semester-card.active .semester-header i {
+.collapsible.active .semester-header i {
     transform: rotate(180deg);
 }
 

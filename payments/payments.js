@@ -202,12 +202,15 @@ function updateSummaryStats() {
     // Check all payment cards
     const allCards = document.querySelectorAll('.payment-card');
     allCards.forEach(card => {
-        const amount = parseInt(card.querySelector('.amount').textContent.replace(/[₹,]/g, ''));
+        const amountEl = card.querySelector('.amount');
+        if (!amountEl) return; // Skip if amount element not found
+        
+        const amount = parseInt(amountEl.textContent.replace(/[₹,]/g, ''));
         const statusBadge = card.querySelector('.status-badge');
         
-        if (statusBadge.classList.contains('paid')) {
+        if (statusBadge && statusBadge.classList.contains('paid')) {
             totalPaid += amount;
-        } else if (statusBadge.classList.contains('pending')) {
+        } else if (statusBadge && statusBadge.classList.contains('pending')) {
             totalPending += amount;
         }
     });

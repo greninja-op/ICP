@@ -59,22 +59,12 @@ body {
 /* --- Main Content Styling --- */
 .dashboard-main { border-left: none; }
 .dashboard-main h1 { margin-top: 0; font-size: 2.5rem; border-bottom: 2px solid rgba(255, 255, 255, 0.3); padding-bottom: 15px; margin-bottom: 30px; }
-.card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; }
 
 /* --- Notice Page Styles --- */
 .notice-list {
     display: flex;
     flex-direction: column;
     gap: 25px;
-}
-
-.notice-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.notice-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 .notice-header {
