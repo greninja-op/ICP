@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System Demo - University Portal</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/utilities.css">
+  
+  <style>
+    .demo-section {
+      margin-bottom: var(--space-12);
+    }
+    
+    .demo-section-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--space-6);
+      color: var(--color-text-primary);
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: var(--space-3);
+    }
+    
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    
+    .color-swatch {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-sm);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-16);">
+    
+    <!-- Header with Dark Mode Toggle -->
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-black">Design System Demo</h1>
+      <button 
+        data-dark-mode-toggle
+        data-icon-light="fas fa-moon"
+        data-icon-dark="fas fa-sun"
+        aria-label="Toggle dark mode"
+        class="glass-btn glass-btn-icon"
+      >
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+
+    <!-- Color Palette -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Color Palette</h2>
+      <div class="demo-grid">
+        <div class="color-swatch" style="background: var(--color-primary); color: white;">
+          Primary<br>#137fec
+        </div>
+        <div class="color-swatch" style="background: var(--color-success); color: white;">
+          Success<br>#10b981
+        </div>
+        <div class="color-swatch" style="background: var(--color-warning); color: white;">
+          Warning<br>#f59e0b
+        </div>
+        <div class="color-swatch" style="background: var(--color-error); color: white;">
+          Error<br>#ef4444
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Typography</h2>
+      <div class="glass-card mb-4">
+        <h1>Heading 1 - Font Black (900)</h1>
+        <h2>Heading 2 - Font Bold (700)</h2>
+        <h3>Heading 3 - Font Bold (700)</h3>
+        <h4>Heading 4 - Font Bold (700)</h4>
+        <h5>Heading 5 - Font Bold (700)</h5>
+        <h6>Heading 6 - Font Bold (700)</h6>
+        <p class="font-normal">Body text - Font Normal (400)</p>
+        <p class="font-medium">Medium text - Font Medium (500)</p>
+        <p class="font-bold">Bold text - Font Bold (700)</p>
+      </div>
+    </section>
+
+    <!-- Glassmorphism Cards -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Glassmorphism Cards</h2>
+      <div class="demo-grid">
+        <div class="glass-card">
+          <h3 class="text-xl font-bold mb-3">Glass Card</h3>
+          <p class="text-secondary">This is a standard glass card with backdrop blur effect.</p>
+        </div>
+        <div class="glass-card glass-card-strong">
+          <h3 class="text-xl font-bold mb-3">Strong Glass Card</h3>
+          <p class="text-secondary">This card has a stronger background opacity.</p>
+        </div>
+        <div class="glass-card glass-card-light">
+          <h3 class="text-xl font-bold mb-3">Light Glass Card</h3>
+          <p class="text-secondary">This card has a lighter background opacity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Buttons</h2>
+      <div class="glass-card">
+        <div class="flex flex-wrap gap-3 mb-4">
+          <button class="glass-btn">Default Button</button>
+          <button class="glass-btn glass-btn-primary">Primary Button</button>
+          <button class="glass-btn glass-btn-success">Success Button</button>
+          <button class="glass-btn glass-btn-warning">Warning Button</button>
+          <button class="glass-btn glass-btn-error">Error Button</button>
+        </div>
+        <div class="flex flex-wrap gap-3 mb-4">
+          <button class="glass-btn glass-btn-sm">Small Button</button>
+          <button class="glass-btn">Regular Button</button>
+          <button class="glass-btn glass-btn-lg">Large Button</button>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <button class="glass-btn">
+            <i class="fas fa-download"></i>
+            With Icon
+          </button>
+          <button class="glass-btn glass-btn-icon">
+            <i class="fas fa-heart"></i>
+          </button>
+          <button class="glass-btn" disabled>Disabled</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Inputs -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Form Inputs</h2>
+      <div class="glass-card">
+        <div class="mb-4">
+          <label class="block mb-2 font-medium">Text Input</label>
+          <input type="text" class="glass-input" placeholder="Enter text...">
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2 font-medium">Textarea</label>
+          <textarea class="glass-input glass-textarea" placeholder="Enter message..."></textarea>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2 font-medium">Select</label>
+          <select class="glass-select">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <div class="flex gap-4">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" class="glass-checkbox">
+            <span>Checkbox</span>
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="radio" name="demo" class="glass-radio">
+            <span>Radio 1</span>
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="radio" name="demo" class="glass-radio">
+            <span>Radio 2</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Badges</h2>
+      <div class="glass-card">
+        <div class="flex flex-wrap gap-3">
+          <span class="glass-badge">Default</span>
+          <span class="glass-badge glass-badge-primary">Primary</span>
+          <span class="glass-badge glass-badge-success">Success</span>
+          <span class="glass-badge glass-badge-warning">Warning</span>
+          <span class="glass-badge glass-badge-error">Error</span>
+          <span class="glass-badge glass-badge-info">Info</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alerts -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Alerts</h2>
+      <div class="flex flex-col gap-4">
+        <div class="glass-alert glass-alert-success">
+          <i class="fas fa-check-circle glass-alert-icon"></i>
+          <div class="glass-alert-content">
+            <div class="glass-alert-title">Success!</div>
+            <div class="glass-alert-message">Your changes have been saved successfully.</div>
+          </div>
+        </div>
+        <div class="glass-alert glass-alert-warning">
+          <i class="fas fa-exclamation-triangle glass-alert-icon"></i>
+          <div class="glass-alert-content">
+            <div class="glass-alert-title">Warning</div>
+            <div class="glass-alert-message">Please review your information before submitting.</div>
+          </div>
+        </div>
+        <div class="glass-alert glass-alert-error">
+          <i class="fas fa-times-circle glass-alert-icon"></i>
+          <div class="glass-alert-content">
+            <div class="glass-alert-title">Error</div>
+            <div class="glass-alert-message">An error occurred while processing your request.</div>
+          </div>
+        </div>
+        <div class="glass-alert glass-alert-info">
+          <i class="fas fa-info-circle glass-alert-icon"></i>
+          <div class="glass-alert-content">
+            <div class="glass-alert-title">Information</div>
+            <div class="glass-alert-message">Your session will expire in 5 minutes.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spacing Scale -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Spacing Scale</h2>
+      <div class="glass-card">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-1); height: 20px; background: var(--color-primary);"></div>
+            <span>space-1 (0.25rem / 4px)</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-2); height: 20px; background: var(--color-primary);"></div>
+            <span>space-2 (0.5rem / 8px)</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-3); height: 20px; background: var(--color-primary);"></div>
+            <span>space-3 (0.75rem / 12px)</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-4); height: 20px; background: var(--color-primary);"></div>
+            <span>space-4 (1rem / 16px)</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-6); height: 20px; background: var(--color-primary);"></div>
+            <span>space-6 (1.5rem / 24px)</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-8); height: 20px; background: var(--color-primary);"></div>
+            <span>space-8 (2rem / 32px)</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-12); height: 20px; background: var(--color-primary);"></div>
+            <span>space-12 (3rem / 48px)</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div style="width: var(--space-16); height: 20px; background: var(--color-primary);"></div>
+            <span>space-16 (4rem / 64px)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Border Radius -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Border Radius</h2>
+      <div class="demo-grid">
+        <div class="glass-card rounded-sm">
+          <strong>rounded-sm</strong><br>0.25rem
+        </div>
+        <div class="glass-card rounded-md">
+          <strong>rounded-md</strong><br>0.5rem
+        </div>
+        <div class="glass-card rounded-lg">
+          <strong>rounded-lg</strong><br>0.75rem
+        </div>
+        <div class="glass-card rounded-xl">
+          <strong>rounded-xl</strong><br>1.5rem
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsive Grid Demo -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Responsive Grid</h2>
+      <p class="mb-4 text-secondary">Resize your browser to see the grid adapt at breakpoints: 640px, 768px, 1024px, 1280px</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="glass-card">Item 1</div>
+        <div class="glass-card">Item 2</div>
+        <div class="glass-card">Item 3</div>
+        <div class="glass-card">Item 4</div>
+        <div class="glass-card">Item 5</div>
+        <div class="glass-card">Item 6</div>
+        <div class="glass-card">Item 7</div>
+        <div class="glass-card">Item 8</div>
+      </div>
+    </section>
+
+    <!-- Modal Demo -->
+    <section class="demo-section">
+      <h2 class="demo-section-title">Modal</h2>
+      <button class="glass-btn glass-btn-primary" onclick="openModal()">
+        Open Modal
+      </button>
+    </section>
+
+  </div>
+
+  <!-- Modal -->
+  <div id="demoModal" class="glass-modal-backdrop">
+    <div class="glass-modal">
+      <div class="glass-modal-header">
+        <h3 class="glass-modal-title">Modal Title</h3>
+        <button class="glass-modal-close" onclick="closeModal()" aria-label="Close modal">
+          &times;
+        </button>
+      </div>
+      <div class="glass-modal-body">
+        <p>This is a glassmorphism modal with backdrop blur effect. It demonstrates the modal component from the design system.</p>
+        <p>The modal includes a header, body, and footer with action buttons.</p>
+      </div>
+      <div class="glass-modal-footer">
+        <button class="glass-btn" onclick="closeModal()">Cancel</button>
+        <button class="glass-btn glass-btn-primary" onclick="closeModal()">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dark Mode Script -->
+  <script src="/assets/js/dark-mode.js"></script>
+  
+  <!-- Modal Demo Script -->
+  <script>
+    function openModal() {
+      document.getElementById('demoModal').classList.add('active');
+    }
+    
+    function closeModal() {
+      document.getElementById('demoModal').classList.remove('active');
+    }
+    
+    // Close modal on backdrop click
+    document.getElementById('demoModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
