@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal API Tester</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        .card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .success { color: green; background: #e6fffa; padding: 10px; border-radius: 4px; }
+        .error { color: red; background: #fff5f5; padding: 10px; border-radius: 4px; }
+        button { background: #0070f3; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0051a2; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 4px; overflow-x: auto; }
+        input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; width: 100%; margin-bottom: 10px; box-sizing: border-box; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🚀 API Connection Tester</h1>
+    <p>Use this tool to verify your backend is running correctly before starting frontend development.</p>
+
+    <div class="card">
+        <h2>1. Configuration</h2>
+        <label>API Base URL:</label>
+        <input type="text" id="baseUrl" value="http://localhost:8000/api">
+        <p><small>Make sure your PHP server is running: <code>php -S localhost:8000</code> inside the backend folder.</small></p>
+    </div>
+
+    <div class="card">
+        <h2>2. Test Login (Authentication)</h2>
+        <label>Username:</label>
+        <input type="text" id="username" value="admin">
+        <label>Password:</label>
+        <input type="password" id="password" value="admin123">
+        <button onclick="testLogin()">Test Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div class="card">
+        <h2>3. Test Protected Endpoint</h2>
+        <p>Requires successful login first.</p>
+        <button onclick="testProfile()" id="profileBtn" disabled>Get Profile (Needs Token)</button>
+        <div id="profileResult"></div>
+    </div>
+
+    <script>
+        let token = '';
+
+        async function testLogin() {
+            const baseUrl = document.getElementById('baseUrl').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('loginResult');
+
+            resultDiv.innerHTML = 'Testing...';
+
+            try {
+                const response = await fetch(`${baseUrl}/auth/login.php`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    token = data.data.token;
+                    resultDiv.innerHTML = `<div class="success">✅ Login Successful!<br>Token received.</div>`;
+                    document.getElementById('profileBtn').disabled = false;
+                    document.getElementById('profileBtn').innerText = 'Get Profile (Ready)';
+                    console.log('Token:', token);
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ Login Failed: ${data.message}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Connection Error: ${error.message}<br>Is the backend server running?</div>`;
+            }
+        }
+
+        async function testProfile() {
+            const baseUrl = document.getElementById('baseUrl').value;
+            const resultDiv = document.getElementById('profileResult');
+
+            if (!token) {
+                resultDiv.innerHTML = '<div class="error">❌ No token found. Login first.</div>';
+                return;
+            }
+
+            resultDiv.innerHTML = 'Fetching profile...';
+
+            try {
+                // Note: Admin doesn't have a student profile, so this might return 404 for admin, 
+                // but 404 means the API is working!
+                // Let's try a generic endpoint or handle the 404 gracefully.
+                // Actually, let's try verify endpoint which works for all roles.
+                const response = await fetch(`${baseUrl}/auth/verify.php`, {
+                    method: 'GET',
+                    headers: { 
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    resultDiv.innerHTML = `<div class="success">✅ Token Verification Successful!<br><pre>${JSON.stringify(data.data, null, 2)}</pre></div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ Verification Failed: ${data.message}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

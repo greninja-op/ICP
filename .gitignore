@@ -12,6 +12,7 @@ lerna-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+backend/.env
 
 # Build outputs
 dist/
@@ -38,6 +39,7 @@ Desktop.ini
 *~
 *.sublime-project
 *.sublime-workspace
+.idx/
 
 # Logs
 logs/
@@ -47,6 +49,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+backend/logs/*.log
 
 # Temporary files
 tmp/
@@ -57,6 +60,19 @@ temp/
 # Testing
 coverage/
 .nyc_output/
+
+# Backend PHP
+backend/vendor/
+backend/uploads/profiles/*.jpg
+backend/uploads/profiles/*.png
+backend/uploads/receipts/*
+backend/uploads/assignments/*
+!backend/uploads/profiles/default.jpg
+!backend/uploads/**/.gitkeep
+
+# Database
+*.sql.backup
+*.sql.bak
 
 # Misc
 .cache/
@@ -69,3 +85,7 @@ coverage/
 .dynamodb/
 .tern-port
 .vscode-test
+
+# Replit specific
+.replit
+replit.nix
