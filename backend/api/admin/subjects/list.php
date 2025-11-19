@@ -9,7 +9,9 @@ require_once '../../../includes/auth.php';
 require_once '../../../includes/functions.php';
 
 $user = verifyAuth();
-if (!$user || $user['role'] !== 'admin') sendError('Forbidden', 'forbidden', 403);
+if (!$user) sendError('Unauthorized', 'unauthorized', 401);
+// Allow admin, teacher, and student to view subjects
+// if (!$user || $user['role'] !== 'admin') sendError('Forbidden', 'forbidden', 403);
 
 try {
     $database = new Database();
