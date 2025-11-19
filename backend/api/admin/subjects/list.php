@@ -21,23 +21,28 @@ try {
     $department = isset($_GET['department']) ? trim($_GET['department']) : null;
     $isActive = isset($_GET['is_active']) ? ($_GET['is_active'] === 'true' || $_GET['is_active'] === '1') : null;
     
-    $query = "SELECT * FROM subjects WHERE 1=1";
+    $query = "SELECT s.*, 
+              (SELECT CONCAT(t.first_name, ' ', t.last_name) 
+               FROM teachers t 
+               WHERE t.department = s.department 
+               LIMIT 1) as teacher 
+              FROM subjects s WHERE 1=1";
     $params = [];
     
     if ($semester !== null) {
-        $query .= " AND semester = :semester";
+        $query .= " AND s.semester = :semester";
         $params[':semester'] = $semester;
     }
     if ($department !== null) {
-        $query .= " AND (department IS NULL OR department = :department)";
+        $query .= " AND (s.department IS NULL OR s.department = :department)";
         $params[':department'] = $department;
     }
     if ($isActive !== null) {
-        $query .= " AND is_active = :is_active";
+        $query .= " AND s.is_active = :is_active";
         $params[':is_active'] = $isActive ? 1 : 0;
     }
     
-    $query .= " ORDER BY semester, subject_code";
+    $query .= " ORDER BY s.semester, s.subject_code";
     
     $stmt = $db->prepare($query);
     foreach ($params as $key => $value) $stmt->bindValue($key, $value);

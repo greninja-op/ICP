@@ -27,27 +27,34 @@ try {
     $database = new Database();
     $db = $database->getConnection();
     
-    // Get teacher ID
-    $teacherId = getTeacherIdFromUserId($user['user_id'], $db);
-    if (!$teacherId) {
+    // Get teacher profile to find department
+    $stmt = $db->prepare("SELECT department FROM teachers WHERE user_id = ?");
+    $stmt->execute([$user['user_id']]);
+    $teacher = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$teacher) {
         sendError('Teacher profile not found', 'not_found', 404);
     }
     
-    // Query assigned subjects
+    $department = $teacher['department'];
+    
+    // Query subjects by department
+    // Since we don't have a specific teacher_subjects assignment table yet,
+    // we assume a teacher can view/manage all subjects in their department.
     $query = "SELECT 
-                s.id,
-                s.subject_code,
-                s.subject_name,
-                s.credit_hours,
-                s.semester,
-                s.department,
-                ts.assigned_at
-              FROM subjects s
-              JOIN teacher_subjects ts ON s.id = ts.subject_id
-              WHERE ts.teacher_id = :teacher_id
-              ORDER BY s.semester, s.subject_code";
+                id,
+                subject_code,
+                subject_name,
+                credit_hours,
+                semester,
+                department,
+                created_at as assigned_at
+              FROM subjects
+              WHERE department = :department
+              ORDER BY semester, subject_code";
               
     $stmt = $db->prepare($query);
+    $stmt->bindParam(':department', $department);
     $stmt->bindParam(':teacher_id', $teacherId, PDO::PARAM_INT);
     $stmt->execute();
     

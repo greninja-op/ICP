@@ -94,7 +94,10 @@ try {
                 s.batch_year,
                 s.profile_image,
                 u.email,
-                u.status
+                u.status,
+                (SELECT COALESCE(AVG(grade_point), 0) FROM marks WHERE student_id = s.id) as cgpa,
+                (SELECT COALESCE((COUNT(CASE WHEN status='present' THEN 1 END) * 100.0 / NULLIF(COUNT(*), 0)), 0) 
+                 FROM attendance WHERE student_id = s.id) as attendance_percentage
               " . $baseQuery . "
               ORDER BY s.student_id
               LIMIT :limit OFFSET :offset";

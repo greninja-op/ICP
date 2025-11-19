@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Student Portal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar -->
+        <aside class="w-64 bg-slate-900 text-white flex flex-col">
+            <div class="p-6 text-center border-b border-slate-800">
+                <h1 class="text-2xl font-bold text-blue-500">Admin<span class="text-white">Portal</span></h1>
+            </div>
+            <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+                <a href="#" onclick="showTab('dashboard')" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors text-slate-300 hover:text-white active-nav" id="nav-dashboard">
+                    <i class="fas fa-chart-line w-5"></i> Dashboard
+                </a>
+                <a href="#" onclick="showTab('students')" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors text-slate-300 hover:text-white" id="nav-students">
+                    <i class="fas fa-user-graduate w-5"></i> Students
+                </a>
+                <a href="#" onclick="showTab('notices')" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors text-slate-300 hover:text-white" id="nav-notices">
+                    <i class="fas fa-bullhorn w-5"></i> Notices
+                </a>
+                <a href="#" onclick="showTab('fees')" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors text-slate-300 hover:text-white" id="nav-fees">
+                    <i class="fas fa-money-bill-wave w-5"></i> Fees
+                </a>
+            </nav>
+            <div class="p-4 border-t border-slate-800">
+                <button onclick="logout()" class="flex items-center gap-3 px-4 py-3 w-full rounded-lg hover:bg-red-600/20 text-red-400 hover:text-red-300 transition-colors">
+                    <i class="fas fa-sign-out-alt w-5"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto p-8">
+            
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6">Dashboard Overview</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-slate-500 font-medium">Total Students</h3>
+                            <div class="p-2 bg-blue-100 text-blue-600 rounded-lg"><i class="fas fa-users"></i></div>
+                        </div>
+                        <p class="text-3xl font-bold text-slate-800" id="total-students">Loading...</p>
+                    </div>
+                    <!-- Add more stats here -->
+                </div>
+            </div>
+
+            <!-- Students Tab -->
+            <div id="students" class="tab-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold text-slate-800">Student Management</h2>
+                    <button onclick="toggleModal('add-student-modal')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                        <i class="fas fa-plus"></i> Add New Student
+                    </button>
+                </div>
+                
+                <!-- Student List Table (Placeholder) -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th class="p-4 font-semibold text-slate-600">ID</th>
+                                <th class="p-4 font-semibold text-slate-600">Name</th>
+                                <th class="p-4 font-semibold text-slate-600">Department</th>
+                                <th class="p-4 font-semibold text-slate-600">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Notices Tab -->
+            <div id="notices" class="tab-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold text-slate-800">Notices</h2>
+                    <button onclick="toggleModal('add-notice-modal')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                        <i class="fas fa-plus"></i> Create Notice
+                    </button>
+                </div>
+                <div id="notices-list" class="space-y-4">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Fees Tab -->
+            <div id="fees" class="tab-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold text-slate-800">Fee Management</h2>
+                    <div class="flex gap-2">
+                        <button onclick="toggleModal('add-fee-modal')" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                            <i class="fas fa-plus"></i> Add Fee Structure
+                        </button>
+                        <button onclick="toggleModal('send-fee-notification-modal')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                            <i class="fas fa-paper-plane"></i> Bulk Notification
+                        </button>
+                    </div>
+                </div>
+                <!-- Fee List -->
+                <div id="fees-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modals -->
+    
+    <!-- Add Student Modal -->
+    <div id="add-student-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-slate-800">Add New Student</h3>
+                <button onclick="toggleModal('add-student-modal')" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <form id="add-student-form" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">First Name</label>
+                        <input type="text" name="first_name" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
+                        <input type="text" name="last_name" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Username</label>
+                        <input type="text" name="username" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                        <input type="email" name="email" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+                        <input type="password" name="password" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Phone</label>
+                        <input type="tel" name="phone" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Date of Birth</label>
+                        <input type="date" name="date_of_birth" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Gender</label>
+                        <select name="gender" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Department</label>
+                        <input type="text" name="department" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Program</label>
+                        <input type="text" name="program" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Semester</label>
+                        <input type="number" name="semester" min="1" max="8" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Batch Year</label>
+                        <input type="number" name="batch_year" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Enrollment Date</label>
+                        <input type="date" name="enrollment_date" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors">Create Student</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Notice Modal -->
+    <div id="add-notice-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-slate-800">Create Notice</h3>
+                <button onclick="toggleModal('add-notice-modal')" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <form id="add-notice-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Title</label>
+                    <input type="text" name="title" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Content</label>
+                    <textarea name="content" rows="4" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Type</label>
+                        <select name="type" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="general">General</option>
+                            <option value="academic">Academic</option>
+                            <option value="exam">Exam</option>
+                            <option value="event">Event</option>
+                            <option value="holiday">Holiday</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Audience</label>
+                        <select name="target_audience" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="all">All</option>
+                            <option value="students">Students</option>
+                            <option value="teachers">Teachers</option>
+                            <option value="staff">Staff</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors">Post Notice</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Send Fee Notification Modal -->
+    <div id="send-fee-notification-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-slate-800">Send Fee Notification</h3>
+                <button onclick="toggleModal('send-fee-notification-modal')" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <form id="send-fee-notification-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Select Fee</label>
+                    <select name="fee_id" id="fee-select" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Notification Title</label>
+                    <input type="text" name="title" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                    <textarea name="message" rows="3" required class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Target Department (Optional)</label>
+                        <input type="text" name="department" class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. CS">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Target Semester (Optional)</label>
+                        <input type="number" name="semester" class="w-full rounded-lg border-slate-300 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors">Send Bulk Notification</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

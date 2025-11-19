@@ -46,8 +46,14 @@ $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 $allowed_origins = [
     'http://localhost:5173',
     'http://localhost:3000',
+    'http://localhost:3002',
     'http://localhost:8000'
 ];
+
+// Allow any localhost origin for development convenience
+if (preg_match('/^http:\/\/localhost:\d+$/', $origin)) {
+    $allowed_origins[] = $origin;
+}
 
 // If we are in development mode (or if origin is in allowed list), allow it
 // You can set APP_ENV in .env file

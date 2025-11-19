@@ -92,12 +92,20 @@ if (!password_verify($data->password, $user['password'])) {
 }
 
 // Validate role selection matches user's actual role
-if (!empty($data->role) && $data->role !== $user['role']) {
+// Accept both 'teacher' and 'staff' as equivalent for backwards compatibility
+$requestedRole = $data->role ?? null;
+$actualRole = $user['role'];
+
+// Normalize roles: treat 'staff' and 'teacher' as the same
+$normalizedRequestedRole = ($requestedRole === 'staff') ? 'teacher' : $requestedRole;
+$normalizedActualRole = ($actualRole === 'staff') ? 'teacher' : $actualRole;
+
+if (!empty($requestedRole) && $normalizedRequestedRole !== $normalizedActualRole) {
     http_response_code(403);
     echo json_encode([
         'success' => false,
         'error' => 'role_mismatch',
-        'message' => 'You are trying to login as ' . $data->role . ' but your account is registered as ' . $user['role'] . '. Please select the correct role.'
+        'message' => 'You are trying to login as ' . $requestedRole . ' but your account is registered as ' . $actualRole . '. Please select the correct role.'
     ]);
     exit();
 }
@@ -130,6 +138,31 @@ $update_stmt->execute();
 
 // Remove password from response
 unset($user['password']);
+
+// Fetch additional profile data based on role
+$profileData = [];
+if ($user['role'] === 'student') {
+    $stmt = $db->prepare("SELECT student_id, first_name, last_name, department, semester, profile_image FROM students WHERE user_id = ?");
+    $stmt->execute([$user['id']]);
+    $profileData = $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
+} elseif ($user['role'] === 'teacher') {
+    $stmt = $db->prepare("SELECT teacher_id, first_name, last_name, department, profile_image FROM teachers WHERE user_id = ?");
+    $stmt->execute([$user['id']]);
+    $profileData = $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
+} elseif ($user['role'] === 'admin') {
+    $stmt = $db->prepare("SELECT admin_id, first_name, last_name FROM admins WHERE user_id = ?");
+    $stmt->execute([$user['id']]);
+    $profileData = $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
+}
+
+// Merge profile data into user object
+if (!empty($profileData)) {
+    $user = array_merge($user, $profileData);
+    // Ensure full_name is available
+    if (isset($user['first_name']) && isset($user['last_name'])) {
+        $user['full_name'] = $user['first_name'] . ' ' . $user['last_name'];
+    }
+}
 
 // Send response
 http_response_code(200);
